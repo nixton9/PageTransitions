@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 5rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    box-sizing: border-box;
+    color: #fff;
+    z-index: 4;
+    // color: #212121;
+
+    h1 {
+        font-weight: 900;
+        font-size: 2.5rem;
+        span {
+            font-weight: 300;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        li {
+            font-size: 1.4rem;
+            margin: 0 30px;
+            font-weight: 300;
+            &:last-of-type {
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+        .active-marker {
+            width: 9px;
+            height: 3px;
+            // background: #212121;
+            background: #ffffff;
+            border-radius: 50px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            animation-duration: .3s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
+            transition: all .3s ease;
+        }
+    }
+}
+
+@keyframes expandActiveMarker {
+    0% { width: 9px; }
+    50% { width: 18px; }
+    100% { width: 9px; }
+}
+@keyframes expandActiveMarker2 {
+    0% { width: 9px; }
+    50% { width: 18px; }
+    100% { width: 9px; }
+}
+
+.page {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding-top: 10rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.home {
+    background-color: #F44336
+}
+.about {
+    background-color: #673AB7;
+}
+.expectations {
+    background-color: #3F51B5;
+}
+.contact {
+    background-color: #03A9F4;
+}
+.freelessons {
+    background-color: #FFC107;
+}
+
+.page-content {
+    width: 80%;
+    margin: 5rem auto 0 auto;
+
+    h1 {
+        font-size: 3rem;
+        letter-spacing: .05rem;
+    }
+
+    p {
+        margin-top: 1.7rem;
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 2.3rem;
+    }
+}
+
+
+.page-steps {
+    display: flex;
+    height: 150vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .step {
+        background: #FFEB3B;
+        width: 25%;
+        transform: translateY(101vh);
+        &::before {
+            content: '';
+            width: 100%;
+            height: 75px;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            bottom: -75px;
+            transform-origin: top;
+            transform: scaleY(1);
+        }
+    }
+}
+
+
+
+
+
+/* TRANSITIONS CSS */
+.fade-enter .step {
+    transform: translateY(101vh);
+    z-index: 5;
+}
+
+.fade-enter-active .step {
+    transform: translateY(-271vh);
+}
+
+.fade-enter-active .step::before {
+    transform: scaleY(0);
+}
+
+.fade-enter-active .step1 { transition: all 2.5s ease-in-out; }
+.fade-enter-active .step2 { transition: all 2.5s ease-in-out 50ms; }
+.fade-enter-active .step3 { transition: all 2.5s ease-in-out 100ms; }
+.fade-enter-active .step4 { transition: all 2.5s ease-in-out 150ms; }
+.fade-enter-active .step5 { transition: all 2.5s ease-in-out 200ms; }
+
+.fade-enter-active .step1::before { transition: all .3s ease-in-out 1.2s; }
+.fade-enter-active .step2::before { transition: all .3s ease-in-out 1.3s; }
+.fade-enter-active .step3::before { transition: all .3s ease-in-out 1.4s; }
+.fade-enter-active .step4::before { transition: all .3s ease-in-out 1.5s; }
+.fade-enter-active .step5::before { transition: all .3s ease-in-out 1.6s; }
+
+.fade-enter-done .page-steps {
+    z-index: 0;
+}
+
+.fade-enter .page {
+    opacity: 0;
+}
+.fade-enter-active .page {
+    opacity: 1;
+    transition: opacity .3s linear .150s;
+}
+
+.fade-exit .page {
+    opacity: 1;
+}
+.fade-exit-active .page {
+    opacity: 0;
+    transition: opacity .150s linear 1s;
+}
+
+.fade-enter .page-content {
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+.fade-enter-active .page-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all .3s linear 1.4s;
+}
